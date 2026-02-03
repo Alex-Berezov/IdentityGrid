@@ -112,6 +112,20 @@ describe('accountsStore', () => {
 
       expect(store.accounts[0]!.password).toBeNull()
     })
+
+    it('should keep password null when updating other fields on LDAP account', () => {
+      const store = useAccountsStore()
+      const account = store.addAccount()
+
+      // Устанавливаем тип LDAP
+      store.updateAccount(account.id, { type: AccountType.LDAP })
+      expect(store.accounts[0]!.password).toBeNull()
+
+      // Обновляем логин — пароль должен остаться null
+      store.updateAccount(account.id, { login: 'ldapuser' })
+      expect(store.accounts[0]!.password).toBeNull()
+      expect(store.accounts[0]!.login).toBe('ldapuser')
+    })
   })
 
   describe('removeAccount', () => {

@@ -47,9 +47,12 @@ export const useAccountsStore = defineStore(
 
       const account = accounts.value[index]!
 
-      // Если меняется тип на LDAP, пароль должен быть null
+      // Определяем итоговый тип
+      const finalType = updates.type ?? account.type
+
+      // Если тип LDAP (новый или текущий), пароль должен быть null
       const passwordValue =
-        updates.type === AccountType.LDAP ? null : (updates.password ?? account.password)
+        finalType === AccountType.LDAP ? null : (updates.password ?? account.password)
 
       accounts.value[index] = {
         id: account.id,

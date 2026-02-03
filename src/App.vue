@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import { NConfigProvider } from 'naive-ui'
+  import { AccountForm } from './features/accounts'
 </script>
 
 <template>
   <NConfigProvider>
     <div class="app-container">
-      <h1>IdentityGrid</h1>
-      <p>Форма управления учетными записями</p>
+      <AccountForm />
     </div>
   </NConfigProvider>
 </template>
