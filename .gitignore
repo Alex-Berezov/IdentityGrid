@@ -25,3 +25,5 @@ dist-ssr
 
 # Local documentation (not for repository)
 docs/
+
+coverage
